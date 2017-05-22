@@ -41,6 +41,7 @@ public:
 				break;
 		case '*':
 		case '/':
+		case '^':
 			if (stack.size() == 0 || stack.back() == '(' || stack.back() == '+')
 				return ADD_TO_STACK;
 			return GET_FROM_STACK;
@@ -172,7 +173,7 @@ public:
 		std::vector<double> stack;
 		double result = 0;
 
-		for (int i = 0; i < input.size(); i++) //Äëÿ êàæäîãî ñèìâîëà â ñòðîêå
+		for (int i = 0; i < input.size(); i++) //Ð”Ð»Ñ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð° Ð² ÑÑ‚Ñ€Ð¾ÐºÐµ
 		{
 			switch (input[i])
 			{
@@ -229,13 +230,13 @@ public:
 				case '-':tmp = a - b; break;
 				case '*':tmp = a * b; break;
 				case '/':tmp = a / b; break;
-		//			case '^':tmp = 
+				case '^':tmp = pow((double)a, (double)b);
 				}
 				stack.push_back(tmp);
 				break;
 			}
 		}
-		return stack.back(); //Çàáèðàåì ðåçóëüòàò âñåõ âû÷èñëåíèé èç ñòåêà è âîçâðàùàåì åãî
+		return stack.back(); //Ð—Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð²ÑÐµÑ… Ð²Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ð¹ Ð¸Ð· ÑÑ‚ÐµÐºÐ° Ð¸ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ ÐµÐ³Ð¾
 	}
 
 
